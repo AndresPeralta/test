@@ -18,7 +18,8 @@ phases:
       - hub version
       - ORG=$(echo $CODEBUILD_SOURCE_REPO_URL| cut -d'/' -f 4)
       - REPO=$(echo $CODEBUILD_SOURCE_REPO_URL| cut -d'/' -f 5)
-      - git remote set-url origin https://$ORG:${token}@github.com/${ORG}/${REPO}
+      - echo "https://${ORG}:${token}@github.com/${ORG}/${REPO}"
+      - git remote set-url origin https://${ORG}:${token}@github.com/${ORG}/${REPO}
       - git config --global user.email "andres.peralta@southworks.com"
       - git config --global user.name "AndresPeralta"
       - hub pull-request -b "main" -h "test1" -r "andres.peralta@southworks.com" -m "test"
