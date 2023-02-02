@@ -1,0 +1,25 @@
+version: 0.2
+batch:
+  fast-fail: false
+
+env:
+  variables:
+    JSON_SCHEMA_PATH: "scripts/jsonschema"
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.10 
+      nodejs: 16
+    commands:
+      - cd $CODEBUILD_SRC_DIR
+      - touch test.txt
+      - echo "test" > test.txt
+      - git config --global user.email "andres.peralta@southworks.com"
+      - git config --global user.name "Andres Peralta"
+      - git branch test1
+      - git checkout test1
+      - git status
+      - git add test.txt
+      - git commit -m 'update tfvars'
+      - git push -u -f origin test1
