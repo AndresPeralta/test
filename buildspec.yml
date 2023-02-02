@@ -17,10 +17,4 @@ phases:
       - git config --global user.email "andres.peralta@southworks.com"
       - git config --global user.name "AndresPeralta"
       - touch test.txt
-      - echo "test" > test.txt
-      - git branch test1
-      - git checkout test1
-      - git status
-      - git add test.txt
-      - git commit -m 'update tfvars'
-      - git push -u -f origin test1
+      - hub pull-request -b "main" -h "test1" -r "andres.peralta@southworks.com" -m "test"
