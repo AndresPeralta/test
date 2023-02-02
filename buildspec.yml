@@ -13,7 +13,7 @@ phases:
       nodejs: 16
     commands:
       - cd $CODEBUILD_SRC_DIR
-      - git remote set-url origin https://scuzzlebuzzle:${token}@github.com/AndresPeralta/test.git
+      - git remote set-url origin https://AndresPeralta:${token}@github.com/AndresPeralta/test.git
       - touch test.txt
       - echo "test" > test.txt
       - git branch test1
