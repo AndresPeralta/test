@@ -12,9 +12,13 @@ phases:
       python: 3.10 
       nodejs: 16
     commands:
-      - cd $CODEBUILD_SRC_DIR
-      - echo $CODEBUILD_SOURCE_REPO_URL
-      - git remote set-url origin https://AndresPeralta:${token}@github.com/AndresPeralta/test.git
+      - curl -L https://github.com/github/hub/releases/download/v2.17.0/hub-linux-amd64-2.17.0.tgz -o hub.tgz
+      - tar xvzf hub.tgz
+      - sudo mv hub-linux-amd64-2.17.0/bin/hub /usr/local/bin/hub
+      - hub version
+      - ORG=$(echo $CODEBUILD_SOURCE_REPO_URL| cut -d'/' -f 4)
+      - REPO=$(echo $CODEBUILD_SOURCE_REPO_URL| cut -d'/' -f 5)
+      - git remote set-url origin https://$ORG:${token}@github.com/${ORG}/${REPO}
       - git config --global user.email "andres.peralta@southworks.com"
       - git config --global user.name "AndresPeralta"
       - hub pull-request -b "main" -h "test1" -r "andres.peralta@southworks.com" -m "test"
