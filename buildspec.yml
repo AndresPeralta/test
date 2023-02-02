@@ -19,9 +19,9 @@ phases:
       - git config --global user.name "AndresPeralta"
       - touch test.txt
       - echo "test" > test.txt
-      - git branch test1
-      - git checkout test1
+      - git branch test2
+      - git checkout test2
       - git status
       - git add test.txt
       - git commit -m 'update tfvars'
-      - git push -u -f origin test1
+      - git push -u -f origin test2
